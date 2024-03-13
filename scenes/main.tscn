@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://l0w3arildew7"]
+
+[ext_resource type="Texture2D" uid="uid://dp22u5wcegepb" path="res://assets/tile.png" id="1_myxcj"]
+[ext_resource type="PackedScene" uid="uid://671n6b4wksft" path="res://scenes/player.tscn" id="2_s2k7k"]
+[ext_resource type="PackedScene" uid="uid://3fl7rb0rqnt" path="res://mogie.tscn" id="3_rch3k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vv14"]
+texture = ExtResource("1_myxcj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_m8co4"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 7
+physics_layer_0/collision_mask = 7
+sources/0 = SubResource("TileSetAtlasSource_5vv14")
+
+[node name="MAIN" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_m8co4")
+format = 2
+layer_0/tile_data = PackedInt32Array(655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 589842, 0, 0, 524306, 0, 0, 458770, 0, 0, 393234, 0, 0, 327698, 0, 0, 262162, 0, 0, 196626, 0, 0, 131090, 0, 0, 65554, 0, 0, 18, 0, 0, 720895, 0, 0, 524287, 0, 0, 458751, 0, 0, 393215, 0, 0, 327679, 0, 0, 262143, 0, 0, 196607, 0, 0, 131071, 0, 0, 131070, 0, 0, 131069, 0, 0, 131068, 0, 0, 131067, 0, 0, 65531, 0, 0, -5, 0, 0, -65541, 0, 0, -131077, 0, 0, -196613, 0, 0, -131063, 0, 0, -131062, 0, 0, -131061, 0, 0, -131060, 0, 0, -131059, 0, 0, -131058, 0, 0, -131057, 0, 0, -131056, 0, 0, -131055, 0, 0, -131054, 0, 0, -65518, 0, 0, -262149, 0, 0, -262148, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 0, 0, -327681, 0, 0, -393217, 0, 0, -458753, 0, 0, -524289, 0, 0, -589825, 0, 0, -655361, 0, 0, -983031, 0, 0, -917495, 0, 0, -851959, 0, 0, -786423, 0, 0, -720887, 0, 0, -655351, 0, 0, -589815, 0, 0, -524279, 0, 0, -458743, 0, 0, -393207, 0, 0, -327671, 0, 0, -262135, 0, 0, -196599, 0, 0, -720897, 0, 0, -786433, 0, 0, -851969, 0, 0, -917505, 0, 0, -983041, 0, 0, -1048577, 0, 0, -1114113, 0, 0, -1179649, 0, 0, -1245185, 0, 0, -1310721, 0, 0, -1376256, 0, 0, -1376255, 0, 0, -1179648, 0, 0, -1179647, 0, 0, -983040, 0, 0, -983039, 0, 0, -786432, 0, 0, -786431, 0, 0, -589824, 0, 0, -589823, 0, 0, -393216, 0, 0, -393215, 0, 0, -196608, 0, 0, -196607, 0, 0, -196609, 0, 0, -131073, 0, 0, -65537, 0, 0, -1, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, -196598, 0, 0, -196597, 0, 0, -393206, 0, 0, -393205, 0, 0, -589814, 0, 0, -589813, 0, 0, -786422, 0, 0, -786421, 0, 0, -983030, 0, 0, -983029, 0, 0, -1048567, 0, 0, -1114103, 0, 0, -1179639, 0, 0, -1245175, 0, 0, -1310711, 0, 0, -1376247, 0, 0, -1376246, 0, 0, -1376245, 0, 0, -1179638, 0, 0, -1179637, 0, 0)
+
+[node name="player" parent="." instance=ExtResource("2_s2k7k")]
+position = Vector2(452, 597)
+metadata/_edit_group_ = true
+
+[node name="testcam" type="Camera2D" parent="player"]
+zoom = Vector2(2, 2)
+
+[node name="mogie" parent="." instance=ExtResource("3_rch3k")]
+position = Vector2(778, 591)
+rotation = 3.14159
+scale = Vector2(1, -1)

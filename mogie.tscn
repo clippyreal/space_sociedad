@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://3fl7rb0rqnt"]
+
+[ext_resource type="Script" path="res://scripts/mogie.gd" id="1_822y2"]
+[ext_resource type="Texture2D" uid="uid://bpnoj7dvgihss" path="res://assets/mogie.png" id="1_dq2tk"]
+[ext_resource type="Texture2D" uid="uid://b2q7jygwmr4np" path="res://assets/mogieArm.png" id="2_umqhq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwxwo"]
+atlas = ExtResource("1_dq2tk")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3nmwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwxwo")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yx27c"]
+size = Vector2(19, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g4lt"]
+atlas = ExtResource("2_umqhq")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqbn7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g4lt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps3jk"]
+size = Vector2(576, 324)
+
+[node name="mogie" type="CharacterBody2D"]
+scale = Vector2(-1, 1)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_822y2")
+
+[node name="body" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3nmwh")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_yx27c")
+
+[node name="arm" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_vqbn7")
+offset = Vector2(8, 0)
+
+[node name="laser" type="Line2D" parent="arm"]
+points = PackedVector2Array(24, 0, 24, 0)
+width = 4.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="detectBox" type="Area2D" parent="."]
+
+[node name="detectShape" type="CollisionShape2D" parent="detectBox"]
+position = Vector2(-5, -169)
+shape = SubResource("RectangleShape2D_ps3jk")
+
+[connection signal="body_entered" from="detectBox" to="." method="_on_detect_box_body_entered"]
+[connection signal="body_exited" from="detectBox" to="." method="_on_detect_box_body_exited"]
