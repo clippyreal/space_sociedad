@@ -12,7 +12,7 @@ var drawLaser = false
 func _process(_delta):
 	if seesPlayer:
 		arm.look_at(player.position)
-		laser.points[1] = Vector2(69,69)
+		laser.points[1] = Vector2(position.distance_to(player.position), 0)
 func _draw():
 	if drawLaser:
 		draw_line(player.position,laser.position,Color.RED,2000)
