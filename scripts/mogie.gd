@@ -12,10 +12,10 @@ var drawLaser = false
 func _process(_delta):
 	if seesPlayer:
 		arm.look_at(player.position)
-		laser.points[1] = player.global_position
+		laser.points[1] = Vector2(69,69)
 func _draw():
 	if drawLaser:
-		draw_line(player.position,laser.position,Color.RED,2)
+		draw_line(player.position,laser.position,Color.RED,2000)
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
